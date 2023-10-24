@@ -25,4 +25,4 @@ dist-ssr
 
 # Added
 .env
-.mp4
+*.mp4
