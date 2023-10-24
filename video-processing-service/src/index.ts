@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 app.post('/process-video', (req, res) => {
-    //Get the path of the input video flire from the request body
+    //Get the path of the input video file from the request body
     const inputFilePath = req.body.inputFilePath;
     const outputFilePath = req.body.outputFilePath;
 
