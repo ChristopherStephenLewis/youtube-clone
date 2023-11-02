@@ -7,10 +7,13 @@ import {
     onAuthStateChanged,
     User,
 } from 'firebase/auth';
+import dotenv from 'dotenv';
+
+dotenv.config({ path: '../../.env.local' });
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: 'AIzaSyA1DxmputP-D4wkpYq_d_KyrXHhhiBCriY',
+    apiKey: process.env.NEXT_PUBLIC_API_KEY,
     authDomain: 'clone-c5bb2.firebaseapp.com',
     projectId: 'clone-c5bb2',
     // storageBucket: 'clone-c5bb2.appspot.com', we already have our own
