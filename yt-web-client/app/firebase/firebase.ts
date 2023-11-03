@@ -1,24 +1,24 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from "firebase/app";
 import {
-    getAuth,
-    signInWithPopup,
-    GoogleAuthProvider,
-    onAuthStateChanged,
-    User,
-} from 'firebase/auth';
-import dotenv from 'dotenv';
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  User,
+} from "firebase/auth";
+import dotenv from "dotenv";
 
-dotenv.config({ path: '../../.env.local' });
+dotenv.config({ path: "../../.env.local" });
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: process.env.NEXT_PUBLIC_API_KEY,
-    authDomain: 'clone-c5bb2.firebaseapp.com',
-    projectId: 'clone-c5bb2',
-    // storageBucket: 'clone-c5bb2.appspot.com', we already have our own
-    // messagingSenderId: '796080766357', we have our own messaging/pub sub
-    appId: '1:796080766357:web:cb32a178b913b09c1cca9c',
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
+  authDomain: "clone-c5bb2.firebaseapp.com",
+  projectId: "clone-c5bb2",
+  // storageBucket: 'clone-c5bb2.appspot.com', we already have our own
+  // messagingSenderId: '796080766357', we have our own messaging/pub sub
+  appId: "1:796080766357:web:cb32a178b913b09c1cca9c",
 };
 
 // Initialize Firebase
@@ -33,7 +33,7 @@ const auth = getAuth(app);
  * @returns A promise that resolves with the user's credentials.
  */
 export function signInWithGoogle() {
-    return signInWithPopup(auth, new GoogleAuthProvider()); // we can use other providers such as GitHub
+  return signInWithPopup(auth, new GoogleAuthProvider()); // we can use other providers such as GitHub
 }
 
 /**
@@ -41,13 +41,15 @@ export function signInWithGoogle() {
  * @returns A promise that resolves when the user is signed out.
  */
 export function signOut() {
-    return auth.signOut();
+  return auth.signOut();
 }
 
 /**
  * Trigger a callback when user auth state changes.
  * @returns A function to unsubscrive callback.
  */
-export function onAuthStateChangedHelper(callback: (user: User | null) => void) {
-    return onAuthStateChanged(auth, callback);
+export function onAuthStateChangedHelper(
+  callback: (user: User | null) => void
+) {
+  return onAuthStateChanged(auth, callback);
 }
