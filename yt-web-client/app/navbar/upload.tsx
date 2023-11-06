@@ -1,12 +1,41 @@
 "use client";
 
+import React from "react";
 import { uploadVideo } from "../firebase/functions";
 
 export default function Upload() {
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.item(0);
+    if (file) {
+      handleUpload(file);
+    }
+  };
+
+  const handleUpload = async (file: File) => {
+    try {
+      const response = await uploadVideo(file);
+      alert(
+        `File uploaded successfully. Response: ${JSON.stringify(response)}`
+      );
+    } catch (error) {
+      alert(`Failed to upload file: ${error}`);
+    }
+  };
+
   return (
     <>
-      <input id="upload" type="file" accept="video/*" />
-      <label htmlFor="upload">
+      <input
+        id="upload"
+        type="file"
+        accept="video/*"
+        className="hidden"
+        onChange={handleFileChange}
+      />
+
+      <label
+        htmlFor="upload"
+        className="flex justify-center items-center rounded-full text-black cursor-pointer text-xs p-2 hover:bg-gray-200"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
