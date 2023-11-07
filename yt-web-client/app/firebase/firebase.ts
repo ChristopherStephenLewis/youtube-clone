@@ -7,6 +7,7 @@ import {
   onAuthStateChanged,
   User,
 } from "firebase/auth";
+import { getFunctions } from "firebase/functions";
 import dotenv from "dotenv";
 
 dotenv.config({ path: "../../.env.local" });
@@ -25,6 +26,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
+export const functions = getFunctions();
 
 // The functions below are so we don't have to expose the auth variable outside of this file.
 
